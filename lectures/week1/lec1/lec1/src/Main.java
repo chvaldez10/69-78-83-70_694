@@ -1,8 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
-        int result = maxNum(arr, arr.length);
-        System.out.println("max="+result);
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int target = 10;
+        int result = fibonacci2(target);
+        System.out.println("fibonacci = "+result);
     }
 
     private static int maxNum(int[] arr, int n) {
@@ -15,5 +16,46 @@ public class Main {
             i += 1;
         }
         return max;
+    }
+    private static int binarySearch(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length-1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == target) {
+                return mid; // Found the target at index mid
+            }
+
+            if (arr[mid] < target) {
+                left = mid + 1; // Target is in the right half
+            } else {
+                right = mid - 1; // Target is in the left half
+            }
+        }
+        return -1;
+    }
+
+    private static int fibonacci(int n) {
+        if (n <=1 ) {
+            return n;
+        } else {
+            return fibonacci(n-1) + fibonacci(n-2);
+        }
+    }
+
+    private static int fibonacci2(int n) {
+        int x0=1, x1=1, x2;
+
+        for (int i=3; i<=n; i++) {
+            x2 = x0;
+            x0 = x1;
+            x1 = x0+x2;
+            System.out.print("x0="+x0+", x1="+ x1+", x2=" + x2);
+            System.out.println();
+        }
+
+        return x1;
     }
 }
