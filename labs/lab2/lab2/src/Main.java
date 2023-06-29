@@ -8,49 +8,43 @@ public class Main {
     public static void main(String[] args) {
         int[] userArr;
         int userSearchKey, linIndex, interpolationSearch;
-//        int userArrSize = askUserForArraySize();
-//        userArr = new int[userArrSize];
-//        userArr = fillArr(userArrSize);
-//        userSearchKey = getUserSearchKey();
-
-        int userArrSize = 1000;
+        int userArrSize = askUserForArraySize();
         userArr = new int[userArrSize];
-        userArr = randomGen(1000);
-        userSearchKey = 69;
+        userArr = fillArr(userArrSize);
+        userSearchKey = getUserSearchKey();
+
+        long linearStartTime0 = System.nanoTime();
+        linIndex = searchLinearWithSort(userArr, userSearchKey);
+        long linearStopTime0 = System.nanoTime();
+        System.out.println("Time taken for the linear search with sorting in the function (nano seconds): "
+                + (linearStopTime0 - linearStartTime0));
 
         long linearStartTime = System.nanoTime();
         linIndex = searchLinear(userArr, userSearchKey);
         long linearStopTime = System.nanoTime();
-        System.out.println("Time taken for the linear search in nano seconds: "
+        System.out.println("Time taken for the linear search without sorting (nano seconds): "
                 + (linearStopTime - linearStartTime));
 
-        long linearStartTime2 = System.nanoTime();
         Arrays.sort(userArr);
+        long linearStartTime2 = System.nanoTime();
         linIndex = searchLinear(userArr, userSearchKey);
         long linearStopTime2 = System.nanoTime();
-        System.out.println("Time taken for the linear search when the array is sorted in nano seconds: "
+        System.out.println("Time taken for the linear search when the array is already sorted (nano seconds): "
                 + (linearStopTime2 - linearStartTime2));
 
         long interStartTime = System.nanoTime();
+//        Arrays.sort(userArr);
         interpolationSearch = getInterpolationSearch(userArr, userSearchKey);
         long interStopTime = System.nanoTime();
         System.out.println("Time taken for the interpolation search in nano seconds: "
                 + (interStopTime - interStartTime));
 
-        System.out.println("Using Linear Search: \nSearch key FOUND at index " + linIndex);
-        System.out.println("Using Interpolation Search: \nSearch key FOUND at index " + interpolationSearch);
-    }
-
-    private static int[] randomGen(int s) {
-        int[] arr = new int[s];
-        Random rd = new Random();
-
-        for(int i=0; i<arr.length; i++) {
-            arr[i] = rd.nextInt();
-            System.out.print(arr[i] + " ");
+        if (linIndex == -1 || interpolationSearch == -1) {
+            System.out.println("Search key NOT FOUND");
+        } else {
+            System.out.println("Using Linear Search: \nSearch key FOUND at index " + linIndex);
+            System.out.println("Using Interpolation Search: \nSearch key FOUND at index " + interpolationSearch);
         }
-
-        return arr;
     }
 
     private static int askUserForArraySize() {
@@ -102,10 +96,22 @@ public class Main {
     }
 
     private static int searchLinear(int[] userArr, int target) {
-        int userIndex;
         int counter = 0;
 
         for (int num: userArr) {
+            if (num == target) return counter;
+            counter ++;
+        }
+
+        return -1;
+    }
+
+    private static int searchLinearWithSort(int[] userArr, int target) {
+        int[] tmpArray = new int[userArr.length];
+        tmpArray = userArr;
+        Arrays.sort(tmpArray);
+        int counter = 0;
+        for (int num: tmpArray) {
             if (num == target) return counter;
             counter ++;
         }
