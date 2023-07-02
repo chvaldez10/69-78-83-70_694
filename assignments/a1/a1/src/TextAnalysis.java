@@ -16,6 +16,7 @@ import java.util.List;
 public class TextAnalysis {
     public static void main(String[] args) {
         String output = askUserForTextFile();
+        System.out.println(output);
     }
 
     private static String askUserForTextFile() {
@@ -25,15 +26,32 @@ public class TextAnalysis {
 
         while (!validEntry) {
             try {
-                System.out.print("Enter input file name: ");
-                String filename = userEntry.nextLine();
+//                System.out.print("Enter input file name: ");
+//                String filename = userEntry.nextLine();
+                String filename = "test.txt";
                 Path filepath = Paths.get(filename);
                 List<String> lines = Files.readAllLines(filepath, charset);
-                for(String line: lines){
-                    System.out.println(line);
-                }
                 validEntry = true;
-                System.out.println("list len = " + lines.toArray().length);
+                return lines.get(0);
+            } catch (Exception e) {
+                System.out.println("Not a valid filename. Please try again.");
+            }
+        }
+
+        return "";
+    }
+
+    private static String askUserForSearchKey() {
+        boolean validEntry = false;
+        Scanner userEntry = new Scanner(System.in);
+
+        while (!validEntry) {
+            try {
+//                System.out.print("Enter search key: ");
+//                String searchKey = userEntry.nextLine();
+                String searchKey = "37";
+                validEntry = true;
+                return searchKey;
             } catch (Exception e) {
                 System.out.println("Not a valid filename. Please try again.");
             }
