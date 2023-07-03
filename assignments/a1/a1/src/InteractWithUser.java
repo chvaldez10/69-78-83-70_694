@@ -30,6 +30,7 @@ public class InteractWithUser {
                 List<String> lines = Files.readAllLines(filepath, charset);
                 return lines.get(0);
             } catch (Exception e) {
+                e.printStackTrace();
                 System.out.println("Not a valid filename. Please try again.");
             }
         }

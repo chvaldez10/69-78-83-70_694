@@ -7,7 +7,10 @@ public class TextAnalysis {
         InteractWithUser terminalPrompt = new InteractWithUser();
         String userText = terminalPrompt.getFilenameFromUser();
         String userSearchKey = terminalPrompt.getSearchKeyFromUser();
-        System.out.println(userText);
-        System.out.println("Search key = " + userSearchKey);
+
+
+        TextAnalyzer analyzer = new TextAnalyzer(userText, userSearchKey);
+        analyzer.displayFrequency();
+
     }
 }
