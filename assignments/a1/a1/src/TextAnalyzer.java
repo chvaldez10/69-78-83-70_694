@@ -3,17 +3,17 @@ import java.util.Arrays;
 
 public class TextAnalyzer implements BasicAnalysis{
     private String userText;
-    private String searchKey;
+    private int searchKey;
     private int numOfCharacters = 0;
     private int[] intFrequency;
     private int[] frequencyOfParagraph = new int[128];
 
     public TextAnalyzer() {
         this.userText = null;
-        this.searchKey = null;
+        this.searchKey = -1;
     }
 
-    public TextAnalyzer(String userText, String userSearchKey) {
+    public TextAnalyzer(String userText, int userSearchKey) {
         this.userText = userText;
         this.searchKey = userSearchKey;
         setFrequencyOfParagraph();
@@ -67,6 +67,20 @@ public class TextAnalyzer implements BasicAnalysis{
 
     @Override
     public int findSearchKey() {
+        int mid;
+        int left = 0;
+        int right = this.intFrequency.length-1;
+        while (left <= right) {
+            mid = left + (left+right)/2;
+
+            if (this.searchKey < mid) {
+                right = mid;
+            } else if (this.searchKey > mid) {
+                left = mid;
+            } else {
+                return mid;
+            }
+        }
         return -1;
     }
 }

@@ -38,19 +38,18 @@ public class InteractWithUser {
         return "Valid filename not entered.";
     }
 
-    public String getSearchKeyFromUser() {
+    public int getSearchKeyFromUser() {
         while (!this.validEntry) {
             try {
-//                System.out.print("Enter search key: ");
-//                String searchKey = userEntry.nextLine();
-                String searchKey = "37";
-                if (searchKey == "") throw new Exception("Search Key can't be empty.");
+                System.out.print("Enter search key: ");
+                int searchKey = userEntry.nextInt();
+//                int searchKey = 37;
                 return searchKey;
             } catch (Exception e) {
                 System.out.println("Not a valid search key. Please try again.");
             }
         }
 
-        return "Valid search key not entered.";
+        return -1;
     }
 }
