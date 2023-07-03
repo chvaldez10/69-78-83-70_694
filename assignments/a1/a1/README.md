@@ -30,7 +30,7 @@ The steps of the assignment are as follows.
 3. Read the input file content into a string ✓
 4. Compute the frequency of each character in the text ✓
 5. Show the characters and their frequencies (Do not include characters that are not present in the input text) ✓
-6. Create an integer array with the frequencies
+6. Create an integer array with the frequencies ✓
 7. Sort the array using “Merge Sort” (Any other sorting will not be accepted)
 8. Show the sorted array
 9. Apply “Binary Search” on the sorted array to search for the key (Any other searching
