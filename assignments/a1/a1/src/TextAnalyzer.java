@@ -1,10 +1,7 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class TextAnalyzer implements BasicAnalysis{
     private String userText;
     private String searchKey;
-    private Map<Character, Integer> frequencyOfParagraph;
+    private int[] frequencyOfParagraph = new int[128];
 
     public TextAnalyzer() {
         this.userText = null;
@@ -18,20 +15,20 @@ public class TextAnalyzer implements BasicAnalysis{
     }
 
     private void setFrequencyOfParagraph() {
-        this.frequencyOfParagraph = new HashMap<>();
         for (char textC : this.userText.toCharArray()) {
-            if(frequencyOfParagraph.containsKey(textC))
-                frequencyOfParagraph.put(textC, frequencyOfParagraph.get(textC) + 1);
-            else frequencyOfParagraph.put(textC, 1);
+            int i = (int) textC;
+            this.frequencyOfParagraph[i]++;
         }
     }
 
-    public Map<Character, Integer> getFrequencyOfParagraph() {return this.frequencyOfParagraph;}
+    public int[] getFrequencyOfParagraph() {return this.frequencyOfParagraph;}
 
     public void displayFrequency() {
-        for (Character textC : this.frequencyOfParagraph.keySet()){
-            int charFrequency = this.frequencyOfParagraph.get(textC);
-            System.out.println(textC + "-" + charFrequency);
+        for (int i=0; i<this.frequencyOfParagraph.length;i++) {
+            if (frequencyOfParagraph[i] != 0 ){
+                char textChar = (char) i;
+                System.out.println(textChar + "-" + frequencyOfParagraph[i]);
+            }
         }
     }
 
