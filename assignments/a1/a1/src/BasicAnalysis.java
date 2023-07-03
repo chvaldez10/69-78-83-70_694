@@ -4,6 +4,6 @@ import java.util.Map;
 public interface BasicAnalysis {
 
     public abstract void displayFrequency();
-    public abstract int[] sortFrequencyArray();
-    public abstract String findSearchKey();
+    public abstract void sortIntFrequency();
+    public abstract int findSearchKey();
 }

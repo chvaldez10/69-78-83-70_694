@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @author Christian Valdez
  */
@@ -13,6 +15,7 @@ public class TextAnalysis {
         analyzer.displayFrequency();
         //need to display freq first
         analyzer.setIntFrequency();
-
+        analyzer.sortIntFrequency();
+        analyzer.displaySortedIntFrequency();
     }
 }

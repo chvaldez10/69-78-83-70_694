@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class TextAnalyzer implements BasicAnalysis{
     private String userText;
     private String searchKey;
@@ -27,10 +30,15 @@ public class TextAnalyzer implements BasicAnalysis{
 
     @Override
     public void displayFrequency() {
+        System.out.println("List of all characters in the text:");
         for (int i=0; i<this.frequencyOfParagraph.length;i++) {
             if (frequencyOfParagraph[i] != 0 ){
                 char textChar = (char) i;
-                System.out.println(textChar + "-" + frequencyOfParagraph[i]);
+                if (textChar == ' ') {
+                    System.out.println("space - " + frequencyOfParagraph[i]);
+                } else {
+                    System.out.println(textChar + "-" + frequencyOfParagraph[i]);
+                }
                 this.numOfCharacters++;
             }
         }
@@ -48,12 +56,17 @@ public class TextAnalyzer implements BasicAnalysis{
     }
 
     @Override
-    public int[] sortFrequencyArray() {
-        return new int[0];
+    public void sortIntFrequency() {
+        // temporary patch for not learning sort yet
+        Arrays.sort(this.intFrequency);
+    }
+
+    public void displaySortedIntFrequency(){
+        System.out.println("\nSorted frequency array\n" + Arrays.toString(this.intFrequency));
     }
 
     @Override
-    public String findSearchKey() {
-        return null;
+    public int findSearchKey() {
+        return -1;
     }
 }

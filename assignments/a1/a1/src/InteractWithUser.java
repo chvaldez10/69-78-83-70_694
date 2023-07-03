@@ -41,7 +41,7 @@ public class InteractWithUser {
     public String getSearchKeyFromUser() {
         while (!this.validEntry) {
             try {
-                System.out.print("Enter search key: ");
+//                System.out.print("Enter search key: ");
 //                String searchKey = userEntry.nextLine();
                 String searchKey = "37";
                 if (searchKey == "") throw new Exception("Search Key can't be empty.");
