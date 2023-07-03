@@ -11,6 +11,8 @@ public class TextAnalysis {
 
         TextAnalyzer analyzer = new TextAnalyzer(userText, userSearchKey);
         analyzer.displayFrequency();
+        //need to display freq first
+        analyzer.setIntFrequency();
 
     }
 }
