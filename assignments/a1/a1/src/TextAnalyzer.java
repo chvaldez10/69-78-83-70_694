@@ -69,14 +69,14 @@ public class TextAnalyzer implements BasicAnalysis{
     public int findSearchKey() {
         int mid;
         int left = 0;
-        int right = this.intFrequency.length-1;
-        while (left <= right) {
-            mid = left + (left+right)/2;
+        int right = this.numOfCharacters-1;
 
-            if (this.searchKey < mid) {
-                right = mid;
-            } else if (this.searchKey > mid) {
-                left = mid;
+        while (left <= right) {
+            mid = (right+left)/2;
+            if (this.searchKey < this.intFrequency[mid]) {
+                right = mid-1;
+            } else if (this.searchKey > this.intFrequency[mid]) {
+                left = mid+1;
             } else {
                 return mid;
             }

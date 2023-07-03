@@ -17,5 +17,13 @@ public class TextAnalysis {
         analyzer.setIntFrequency();
         analyzer.sortIntFrequency();
         analyzer.displaySortedIntFrequency();
+        int searchResult = analyzer.findSearchKey();
+        if (searchResult == -1) {
+            System.out.println("Search key " + "'"+ userSearchKey + "'" + " NOT FOUND");
+        } else {
+            System.out.println("\nSearch key " + "'" + userSearchKey + "'" + " FOUND");
+            System.out.println("\nSearch key " + "'" + userSearchKey + "'" + " is at index " + searchResult);
+        }
+
     }
 }

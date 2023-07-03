@@ -41,9 +41,9 @@ public class InteractWithUser {
     public int getSearchKeyFromUser() {
         while (!this.validEntry) {
             try {
-                System.out.print("Enter search key: ");
-                int searchKey = userEntry.nextInt();
-//                int searchKey = 37;
+//                System.out.print("Enter search key: ");
+//                int searchKey = userEntry.nextInt();
+                int searchKey = 37;
                 return searchKey;
             } catch (Exception e) {
                 System.out.println("Not a valid search key. Please try again.");
