@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int target = 10;
-        int result = fibonacci2(target);
+        int result = fibonacci(target);
         System.out.println("fibonacci = "+result);
     }
 
@@ -37,25 +37,34 @@ public class Main {
         return -1;
     }
 
+    private static int factorial(int n) {
+//        if(n == 1) {
+//            return 1;
+//        } else {
+//            return n * factorial(n-1);
+//        }
+        int i = 1;
+        int result = i;
+        while (i<=n) {
+            result *= i;
+            i++;
+        }
+        return result;
+    }
+
     private static int fibonacci(int n) {
-        if (n <=1 ) {
+//        int first = 1;
+//        int second = 1;
+//        int third;
+//        for (int i = 2; i < n; i ++) {
+//            third = first + second;
+//            first = second;
+//            second = third;
+//        }
+        if (n <= 1){
             return n;
         } else {
             return fibonacci(n-1) + fibonacci(n-2);
         }
-    }
-
-    private static int fibonacci2(int n) {
-        int x0=1, x1=1, x2;
-
-        for (int i=3; i<=n; i++) {
-            x2 = x0;
-            x0 = x1;
-            x1 = x0+x2;
-            System.out.print("x0="+x0+", x1="+ x1+", x2=" + x2);
-            System.out.println();
-        }
-
-        return x1;
     }
 }
