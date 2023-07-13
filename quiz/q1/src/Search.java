@@ -4,10 +4,12 @@ public class Search implements Constants{
     public static int binarySearch(int[] arr, int target) {
         int left = 0;
         int right = arr.length-1;
+        double div;
         int mid;
 
         while(left <= right) {
-            mid = (left+right)/2;
+            div = ((double)left+right)/2;
+            mid = (int) Math.ceil(div);
             if(arr[mid] < target) left = mid + 1;
             else if (target < arr[mid]) right = mid - 1;
             else return mid; //target found
@@ -62,8 +64,15 @@ public class Search implements Constants{
         return defaultSearchKey;
     }
 
+    public static int linearSearch(int[] arr, int target) {
+        for (int i=0; i< arr.length; i++) if (arr[i] == target) return i;
+        return -1;
+    }
+
     public static void main(String[] args) {
-        int[] a = {1, 4, 5, 5, 59};
+        int[] a = {12, 19, 23, 24, 25, 32, 41, 45, 57, 58, 67, 72, 76, 89, 93, 94};
+        int result = binarySearch(a, 23);
+        System.out.println("key at " + result);
     }
 
 }

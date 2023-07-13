@@ -3,7 +3,7 @@ import java.util.Arrays;
 class Sort implements Constants{
     public static void quickSort(int[] a, int f, int l){
         if(f<l){
-            int p = partitionFirst(a, f, l);
+            int p = partition(a, f, l);
             quickSort(a, f, p-1);
             quickSort(a, p+1, l);
         }
@@ -141,7 +141,7 @@ class Sort implements Constants{
     public static void insertionSort(int[] a){
         for(int i=1, j; i<a.length; i++){
             int tmp = a[i];
-            for(j=i-1; j>=0 && tmp<a[j]; j--) a[j+1] = a[j];
+            for(j=i-1; j>=0 && tmp<a[j]; j--) a[j + 1] = a[j];
             a[j+1] = tmp;
         }
     }
@@ -156,8 +156,10 @@ class Sort implements Constants{
 
     public static void main(String[] args) {
         int[] arr = {15, 4, 55, 51, 90, 14, 12, 50, 95, 23};
+
         System.out.println("pre srt " + Arrays.toString(arr));
-        quickSort(arr,0, arr.length-1 );
+//        quickSort(arr,0 ,arr.length-1);
+        insertionSort(arr);
         System.out.println("post srt " + Arrays.toString(arr));
     }
 }
