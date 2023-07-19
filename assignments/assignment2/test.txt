@@ -1,0 +1,12 @@
+{"Kayak", "Rotator", "Post", "Noon", "Stop", "Elbow", "Level", "Spot", "Mom", "Below"};
+
+Kayak
+Rotator
+Post
+Noon
+Stop
+Elbow
+Level
+Spot
+Mom
+Below
