@@ -1,4 +1,3 @@
-package myLibrary.DataStructures.Tree;
 
 public class BST {
 
@@ -148,11 +147,11 @@ public class BST {
 //		System.out.println("\nPost order traversal (left-right-root) of Tree1");
 //		tree.postOrder(root);
 //
-		System.out.println("\n\n\ntesting search");
-
-		Node searchNode = tree.searchBinarySearchTree(root, 50);
-		System.out.println("searchNode data: " + searchNode.data);
-
+//		System.out.println("\n\n\ntesting search");
+//
+//		Node searchNode = tree.searchBinarySearchTree(root, 50);
+//		System.out.println("searchNode data: " + searchNode.data);
+//
 
 
 	}

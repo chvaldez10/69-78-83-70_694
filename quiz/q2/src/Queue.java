@@ -1,4 +1,3 @@
-package myLibrary.DataStructures.Tree;
 
 public class Queue {
 	private int length = 0;
