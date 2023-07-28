@@ -20,6 +20,33 @@ public class BST {
         inOrder(node.right);
     }
 
+    public void preOrder(BST_Node node) {
+        if (node == null ) return;
+        System.out.println(node.data + " ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    public void postOrder(BST_Node node) {
+        if (node == null) return;
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.data + " ");
+    }
+
+    public void breadFirstTraversal(BST_Node root) {
+        if (root == null) return;
+    }
+
+    public BST_Node searchBinarySEarchTree(BST_Node node, int key) {
+        while (node != null) {
+            if (key == node.data) return node;
+            else if (key < node.data) node=node.left;
+            else node=node.right;
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         BST A = new BST();
         BST_Node root = null;
