@@ -118,41 +118,26 @@ public class BST {
 	public static void main(String[] args) {
 		BST tree = new BST();
 		Node root = null;
-		int[] testArr = {30, 23, 43, 54, 12, 50, 45, 97};
+//		int[] testArr = {30, 23, 43, 54, 12, 50, 45, 97};
+//		int[] testArr = {32, 18, 71, 24, 43, 88, 30, 52, 95};
+		int[] testArr = {82, 39, 94, 38, 59, 88, 44, 86, 93};
 
 		for (int i : testArr) root = tree.insert(i, root);
 
 		System.out.println("\nBreadth first traversal of the Tree");
 		tree.breadthFirstTraversal(root);
 
-//		System.out.println("\n\n\nIn order traversal (left-root-right) of Tree1");
-//		tree.inOrder(root);
-//
-//		System.out.println("\nPre order traversal (root-left-right) of Tree1");
-//		tree.preOrder(root);
-//
-//		System.out.println("\nPost order traversal (left-right-root) of Tree1");
-//		tree.postOrder(root);
-//
-//		System.out.println("\n\n\ntesting delete");
-//
-//		tree.deleteNode(root, 12);
-//
-//		System.out.println("In order traversal (left-root-right) of Tree1");
-//		tree.inOrder(root);
-//
-//		System.out.println("\nPre order traversal (root-left-right) of Tree1");
-//		tree.preOrder(root);
-//
-//		System.out.println("\nPost order traversal (left-right-root) of Tree1");
-//		tree.postOrder(root);
-//
-//		System.out.println("\n\n\ntesting search");
-//
-//		Node searchNode = tree.searchBinarySearchTree(root, 50);
-//		System.out.println("searchNode data: " + searchNode.data);
-//
+		System.out.println("\n\nIn order traversal (left-root-right) of Tree1");
+		tree.inOrder(root);
 
+		System.out.println("\n\nPre order traversal (root-left-right) of Tree1");
+		tree.preOrder(root);
+
+		System.out.println("\n\nPost order traversal (left-right-root) of Tree1");
+		tree.postOrder(root);
+
+		System.out.println("\n\nTesting delete");
+		tree.deleteNode(root, 88);
 
 	}
 }

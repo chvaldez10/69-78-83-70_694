@@ -106,9 +106,9 @@ public class MaxHeap {
         int[] arr = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
         for (int i : arr) maxHeap.insert(i);
         System.out.println("Max Heap: " + Arrays.toString(maxHeap.getHeap()));
-        maxHeap.delete(14);
-        System.out.println("Max Heap Delete: " + Arrays.toString(maxHeap.getHeap()));
-//        maxHeap.heapSort();
-//        System.out.println("Max Heap: " + Arrays.toString(maxHeap.getHeap()));
+//        maxHeap.delete(14);
+//        System.out.println("Max Heap Delete: " + Arrays.toString(maxHeap.getHeap()));
+        maxHeap.heapSort();
+        System.out.println("Max Heap Sorted: " + Arrays.toString(maxHeap.getHeap()));
     }
 }
