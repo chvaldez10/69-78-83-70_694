@@ -1,10 +1,8 @@
-package myLibrary.GraphAlgo;
-
 import java.util.*;
 
 public class DijkstraShortestPath {
     private int vertices;
-    private List<List<Node>> graph;
+    private List<List<DijNode>> graph;
 
     public DijkstraShortestPath(int vertices) {
         this.vertices = vertices;
@@ -15,7 +13,8 @@ public class DijkstraShortestPath {
     }
 
     public void addEdge(int source, int destination, int weight) {
-        graph.get(source).add(new Node(destination, weight));
+        graph.get(source).add(new DijNode(destination, weight));
+        graph.get(destination).add(new DijNode(source, weight)); // If the graph is undirected
     }
 
     public int[] dijkstra(int start) {
@@ -23,25 +22,42 @@ public class DijkstraShortestPath {
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[start] = 0;
 
-        PriorityQueue<Node> minHeap = new PriorityQueue<>(Comparator.comparingInt(node -> node.weight));
-        minHeap.offer(new Node(start, 0));
+        int[] previous = new int[vertices];
+        Arrays.fill(previous, -1);
+
+        PriorityQueue<DijNode> minHeap = new PriorityQueue<>(Comparator.comparingInt(DijNode -> DijNode.weight));
+        minHeap.offer(new DijNode(start, 0));
 
         while (!minHeap.isEmpty()) {
-            Node currentNode = minHeap.poll();
-            int u = currentNode.vertex;
+            DijNode currentDijNode = minHeap.poll();
+            int u = currentDijNode.vertex;
 
-            for (Node neighbor : graph.get(u)) {
+            for (DijNode neighbor : graph.get(u)) {
                 int v = neighbor.vertex;
                 int weight = neighbor.weight;
 
                 if (distance[u] != Integer.MAX_VALUE && distance[u] + weight < distance[v]) {
                     distance[v] = distance[u] + weight;
-                    minHeap.offer(new Node(v, distance[v]));
+                    previous[v] = u;
+                    minHeap.offer(new DijNode(v, distance[v]));
                 }
             }
         }
 
-        return distance;
+        return previous;
+    }
+
+    public List<Integer> shortestPath(int start, int end, int[] previous) {
+        List<Integer> path = new ArrayList<>();
+        int current = end;
+
+        while (current != -1) {
+            path.add(current);
+            current = previous[current];
+        }
+
+        Collections.reverse(path);
+        return path;
     }
 
     public static void main(String[] args) {
@@ -58,20 +74,20 @@ public class DijkstraShortestPath {
         dijkstra.addEdge(4, 5, 1);
 
         int startVertex = 0;
-        int[] shortestDistances = dijkstra.dijkstra(startVertex);
+        int[] previous = dijkstra.dijkstra(startVertex);
 
         System.out.println("Shortest distances from vertex " + startVertex + ":");
         for (int i = 0; i < numVertices; i++) {
-            System.out.println("Vertex " + i + ": " + shortestDistances[i]);
+            System.out.println("Vertex " + i + ": " + dijkstra.shortestPath(startVertex, i, previous));
         }
     }
 }
 
-class Node {
+class DijNode {
     int vertex;
     int weight;
 
-    public Node(int vertex, int weight) {
+    public DijNode(int vertex, int weight) {
         this.vertex = vertex;
         this.weight = weight;
     }
