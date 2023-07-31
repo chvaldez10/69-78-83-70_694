@@ -67,7 +67,7 @@ class KruskalAlgorithm {
     }
 }
 
-public class Main {
+public class Kruskal {
     public static void main(String[] args) {
         int V = 6; // Number of vertices
 
