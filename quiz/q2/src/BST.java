@@ -1,7 +1,13 @@
+/**
+ *  Implementation of binary tree
+ *
+ *  Uses: Node.java, Queue.java, QNode.java
+ *
+ *  @author Christian Valdez
+ */
+
 
 public class BST {
-
-	// Create node
 	public Node createNode(int data){
 		Node BSTNode = new Node();
 		BSTNode.data = data;
@@ -10,45 +16,55 @@ public class BST {
 		return BSTNode;
 	}
 
-	// Insert new node in BST - you can use recursive or iterative method
-	public Node insert(int data, Node root)
-	{
+	public Node insert(int data, Node root) {
 		if(root == null) return createNode(data);
 		if(data <= root.data) root.left = insert(data, root.left);
 		else if (data > root.data) root.right = insert(data, root.right);
 		return root;
 	}
-	
-	// Inorder traversal - recursive OR iterative
-	public void inOrder(Node BSTNode)
-	{
+
+	/**
+	 * Traverse the left subtree, root, right subtree.
+	 *
+	 * @param BSTNode
+	 */
+	public void inOrder(Node BSTNode) {
 		if (BSTNode == null) return;
 		inOrder(BSTNode.left);
 		System.out.print(BSTNode.data + " ");
 		inOrder(BSTNode.right);
 	}
 
-	// Preorder traversal - recursive OR iterative
-	public void preOrder(Node BSTNode)
-	{
+	/**
+	 * Traverse the root, left subtree, right subtree.
+	 *
+	 * @param BSTNode
+	 */
+	public void preOrder(Node BSTNode) {
 		if (BSTNode == null) return;
 		System.out.print(BSTNode.data + " ");
 		preOrder(BSTNode.left);
 		preOrder(BSTNode.right);
 	}
 
-	// Postorder traversal - recursive OR iterative
-	public void postOrder(Node BSTNode)
-	{
+	/**
+	 * Traverse the left subtree, right subtree, root.
+	 *
+	 * @param BSTNode
+	 */
+	public void postOrder(Node BSTNode) {
 		if (BSTNode == null) return;
 		postOrder(BSTNode.left);
 		postOrder(BSTNode.right);
 		System.out.print(BSTNode.data + " ");
 	}
 
-	// Breadth first traversal - recursive OR iterative
-	public void breadthFirstTraversal(Node root)
-	{
+	/**
+	 * Traverse the tree nodes at each level.
+	 *
+	 * @param root
+	 */
+	public void breadthFirstTraversal(Node root) {
 		if (root == null) return;
 
 		Queue q = new Queue();
@@ -60,37 +76,36 @@ public class BST {
 			if(node.left != null) q.enqueue(node.left);
 			if(node.right != null) q.enqueue(node.right);
 		}
-
 	}
 
-
-	// Search in BST
+	/**
+	 * Starting at the root, traverse the tree to find a node.
+	 *
+	 * @param BSTNode, key
+	 */
 	public Node searchBinarySearchTree(Node BSTNode, int key) {
 		return searchRec(BSTNode, key);
 	}
 
+	// searchBinarySearchTree() helper
 	private Node searchRec(Node root, int key) {
-		if (root == null)
-			return null;
-
-		if (root.data == key)
-			return root;
-
-		if (key < root.data)
-			return searchRec(root.left, key);
-		else
-			return searchRec(root.right, key);
+		if (root == null) return null; // BST is empty
+		if (root.data == key) return root; // key found at root node
+		if (key < root.data) return searchRec(root.left, key); //traverse left sub tree
+		else return searchRec(root.right, key); // traverse right subtree
 	}
 
-	// Delete from BST
-	public Node deleteNode(Node root, int key)
-	{
+	/**
+	 * Search for the node and delete it.
+	 *
+	 * @param root, key
+	 */
+	public Node deleteNode(Node root, int key) {
 		deleteNodeRecursive(root, key);
 		return root;
 	}
 
-	public Node deleteNodeRecursive(Node root, int key)
-	{
+	public Node deleteNodeRecursive(Node root, int key) {
 		if (root == null) return root;
 
 		if (key < root.data) root.left = deleteNodeRecursive(root.left, key);
@@ -114,7 +129,6 @@ public class BST {
 		return minValue;
 	}
 
-	// Add any other parts needed
 	public static void main(String[] args) {
 		BST tree = new BST();
 		Node root = null;

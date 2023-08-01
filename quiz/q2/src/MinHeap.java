@@ -33,6 +33,17 @@ public class MinHeap {
         heap[j] = temp;
     }
 
+    public void insert(int value) {
+        if (length == max) {
+            System.out.println("Heap is full.");
+            return;
+        }
+
+        heap[length] = value;
+        heapifyUp(length);
+        length++;
+    }
+
     private void heapifyUp(int index) {
         while (index > 0 && heap[index] < heap[parent(index)]) {
             swap(index, parent(index));
@@ -53,49 +64,21 @@ public class MinHeap {
         }
     }
 
-    private void heapifyDown(int index, int size) {
-        int left = 2 * index + 1;
-        int right = 2 * index + 2;
-        int smallest = index;
-
-        if (left < size && heap[left] < heap[smallest]) {
-            smallest = left;
-        }
-
-        if (right < size && heap[right] < heap[smallest]) {
-            smallest = right;
-        }
-
-        if (smallest != index) {
-            int temp = heap[index];
-            heap[index] = heap[smallest];
-            heap[smallest] = temp;
-
-            heapifyDown(smallest, size);
-        }
-    }
-
-    public void insert(int value) {
-        if (length == max) {
-            System.out.println("Heap is full.");
-            return;
-        }
-
-        heap[length] = value;
-        heapifyUp(length);
-        length++;
-    }
-
     public void heapSort() {
         int originallength = length;
+        int[] tmpArr = new int[originallength];
+        int j = 0;
 
         for (int i = length / 2 - 1; i >= 0; i--) heapifyDown(i);
         for (int i = length - 1; i >= 0; i--) {
             swap(0, i);
-//            length--;
-//            heapifyDown(0);
-            heapifyDown(0, i);
+            tmpArr[j] = heap[i];
+            length--;
+            heapifyDown(0);
+            j++;
         }
+
+        System.out.println("tmp Array = " + Arrays.toString(tmpArr));
         length = originallength;
     }
 
