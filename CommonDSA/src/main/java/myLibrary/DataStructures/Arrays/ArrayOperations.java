@@ -24,4 +24,19 @@ public class ArrayOperations {
         for (int i=arr.length-1; i>indexInsert; i--) arr[i] = arr[i - 1];
         arr[indexInsert] = newNum;
     }
+
+    public static void delete(int[] arr, int indexToDelete) throws NullPointerException, IndexOutOfBoundsException{
+        if (arr == null) {
+            throw new NullPointerException("Array is empty");
+        }
+
+        if (indexToDelete < 0 || indexToDelete >= arr.length) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + indexToDelete);
+        }
+
+        for (int i=indexToDelete; i<arr.length-1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr[arr.length-1] = 0;
+    }
 }
