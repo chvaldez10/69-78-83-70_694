@@ -77,6 +77,23 @@ public class SinglyLinkedList {
         }
     }
 
+    public void reverse(){
+        Node currentNode = head;
+        Node previousNode = null;
+        Node nextNode = null;
+
+        tail = head;
+
+        while(currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        head = previousNode;
+    }
+
     /**
      * Checks if the list is empty.
      * @return true if the list is empty, false otherwise.

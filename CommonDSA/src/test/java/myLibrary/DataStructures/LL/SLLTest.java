@@ -149,4 +149,25 @@ class SLLTest {
             sll.insertAtPosition(6, 5);
         });
     }
+
+    @Test
+    public void testReverse() {
+        SinglyLinkedList sll = new SinglyLinkedList();
+        for (int i : arr ) sll.insert(i);
+
+        String newLine = System.lineSeparator();
+        String expectedOutputBeginning = "5 4 3 2 1 " + newLine;
+
+        // head = 1, tail = 5, size = 5
+        assertEquals(sll.getHeadData(), 1);
+        assertEquals(sll.getTailData(), 5);
+        assertEquals(sll.getSize(), 5);
+
+        // insert at End, 1 > 2 > 3 > 4 > 5 > 6
+        sll.reverse();
+        sll.display();
+        assertEquals(sll.getHeadData(), 5);
+        assertEquals(sll.getTailData(), 1);
+        assertEquals(expectedOutputBeginning, output.toString());
+    }
 }
