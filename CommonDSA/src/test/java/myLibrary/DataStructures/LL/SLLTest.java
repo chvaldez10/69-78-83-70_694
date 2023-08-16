@@ -127,4 +127,26 @@ class SLLTest {
         sll.display();
         assertEquals(expectedOutputBeginning, output.toString());
     }
+
+    @Test
+    public void testInsertAtPositionOutOfBounds() {
+        SinglyLinkedList sll = new SinglyLinkedList();
+        for (int i : arr ) sll.insert(i);
+
+        String newLine = System.lineSeparator();
+        String expectedOutputBeginning = "1 2 3 4 5 6 " + newLine;
+
+        // head = 1, tail = 5, size = 5
+        assertEquals(sll.getHeadData(), 1);
+        assertEquals(sll.getTailData(), 5);
+        assertEquals(sll.getSize(), 5);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            sll.insertAtPosition(6, -1);
+        });
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            sll.insertAtPosition(6, 5);
+        });
+    }
 }

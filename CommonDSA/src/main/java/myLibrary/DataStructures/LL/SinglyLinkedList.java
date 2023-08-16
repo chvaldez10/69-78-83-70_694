@@ -49,7 +49,11 @@ public class SinglyLinkedList {
      * @param data data of the new node
      * @param position index of the new node
      */
-    public void insertAtPosition(int data, int position) {
+    public void insertAtPosition(int data, int position) throws IndexOutOfBoundsException{
+        if (position < 0 || position >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds" + position);
+        }
+
         if (position == 0) {
             insertAtBeginning(data);
             return;
