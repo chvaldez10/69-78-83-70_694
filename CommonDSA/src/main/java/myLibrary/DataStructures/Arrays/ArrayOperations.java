@@ -18,16 +18,10 @@ public class ArrayOperations {
         }
 
         if (indexInsert < 0 || indexInsert >= arr.length) {
-            throw new IndexOutOfBoundsException("Index out of bounds");
+            throw new IndexOutOfBoundsException("Index out of bounds: " + indexInsert);
         }
 
         for (int i=arr.length-1; i>indexInsert; i--) arr[i] = arr[i - 1];
         arr[indexInsert] = newNum;
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5};
-        ArrayOperations.insert(arr, 0, 6);
-        System.out.println(Arrays.toString(arr));
     }
 }
