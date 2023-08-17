@@ -170,4 +170,26 @@ class SLLTest {
         assertEquals(sll.getTailData(), 1);
         assertEquals(expectedOutputBeginning, output.toString());
     }
+
+    @Test
+    public void testSearch() {
+        SinglyLinkedList sll = new SinglyLinkedList();
+        for (int i : arr ) sll.insert(i);
+        assertTrue(sll.search(2));
+        assertFalse(sll.search(99));
+    }
+
+    @Test
+    public void testDelete() {
+        SinglyLinkedList sll = new SinglyLinkedList();
+        for (int i : arr ) sll.insert(i);
+        String newLine = System.lineSeparator();
+        String expectedOutputBeginning = "1 2 4 5 " + newLine;
+
+        // delete 3
+        sll.delete(3);
+
+        sll.display();
+        assertEquals(expectedOutputBeginning, output.toString());
+    }
 }

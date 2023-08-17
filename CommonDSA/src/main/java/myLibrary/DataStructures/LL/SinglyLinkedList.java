@@ -1,6 +1,9 @@
 package myLibrary.DataStructures.LL;
 
 public class SinglyLinkedList {
+    /**
+     * Node class for SinglyLinkedList
+     */
     private class Node {
         private int data;
         private Node next;
@@ -77,6 +80,20 @@ public class SinglyLinkedList {
         }
     }
 
+    public boolean search(int target) {
+        Node current = head;
+
+        while(current != null) {
+            if (current.data == target) return true;
+            current = current.next;
+        }
+
+        return false;
+    }
+
+    /**
+     * Reverse linked list
+     */
     public void reverse(){
         Node currentNode = head;
         Node previousNode = null;
@@ -92,6 +109,27 @@ public class SinglyLinkedList {
         }
 
         head = previousNode;
+    }
+
+    public void delete(int target){
+        Node currentNode = head;
+        Node prevNode = null;
+
+        if (currentNode != null && currentNode.data == target) {
+            head = currentNode.next;
+            return;
+        }
+
+        while (currentNode != null && currentNode.data != target) {
+            prevNode = currentNode;
+            currentNode = currentNode.next;
+        }
+
+        if (currentNode == null) {
+            return;
+        }
+
+        prevNode.next = currentNode.next;
     }
 
     /**
