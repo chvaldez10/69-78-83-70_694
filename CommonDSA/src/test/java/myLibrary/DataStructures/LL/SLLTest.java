@@ -12,10 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class SLLTest {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(output));
     }
+
     @AfterEach
     public void restoreStreams() {
         System.setOut(originalOut);

@@ -22,6 +22,7 @@ public class SinglyLinkedList {
     public int getSize() { return this.size; }
 
     public int getHeadData() { return this.head.data; }
+
     public int getTailData() { return this.tail.data; }
 
     /**
@@ -111,6 +112,10 @@ public class SinglyLinkedList {
         head = previousNode;
     }
 
+    /**
+     * Delete a node by redirecting its pointers.
+     * @param target delete node with specified data
+     */
     public void delete(int target){
         Node currentNode = head;
         Node prevNode = null;
