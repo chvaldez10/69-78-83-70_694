@@ -52,6 +52,23 @@ public class CircularSinglyLinkedList {
     }
 
     /**
+     * Insert at the beginning of the list
+     * @param data data of the new node
+     */
+
+    public void insertAtBeginning(int data){
+        if (isEmpty()) {
+            addToEmpty(data);
+        } else {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+            tail.next = newNode;
+        }
+        size++;
+    }
+
+    /**
      * Checks if the list is empty.
      * @return true if the list is empty, false otherwise.
      */

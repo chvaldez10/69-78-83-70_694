@@ -46,4 +46,27 @@ class CircularSinglyLinkedListTest {
         csll.display();
         assertEquals(output.toString(), expectedOutput);
     }
+
+    @Test
+    public void testInsertAtBeginning(){
+        CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
+        String newLine = System.lineSeparator();
+        String expectedOutput = "6 1 2 3 4 5 " + newLine;
+
+        // list is empty at the start, size = 0
+        assertTrue(csll.isEmpty());
+        assertEquals(csll.getSize(), 0);
+
+        // adding a nodes
+        for (int i : arr) csll.insert(i);
+        csll.insertAtBeginning(6);
+
+        // list is not empty, size = 5
+        assertFalse(csll.isEmpty());
+        assertEquals(6, csll.getSize());
+
+        // testing display to terminal
+        csll.display();
+        assertEquals(output.toString(), expectedOutput);
+    }
 }
