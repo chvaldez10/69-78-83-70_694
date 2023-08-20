@@ -9,7 +9,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SLLTest {
+class SinglyLinkedListTest {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -52,6 +52,8 @@ class SLLTest {
         sll.insert(3);
         assertEquals(sll.getHeadData(), 2);
         assertEquals(sll.getTailData(), 3);
+
+        //checking size
         assertEquals(sll.getSize(), 2);
         assertFalse(sll.isEmpty());
 
@@ -63,7 +65,7 @@ class SLLTest {
     }
 
         @Test
-        public void testTDisplay() {
+        public void testDisplay() {
             String newLine = System.lineSeparator();
             String expectedOutput = "1 2 3 4 5 " + newLine;
             SinglyLinkedList sll = new SinglyLinkedList();

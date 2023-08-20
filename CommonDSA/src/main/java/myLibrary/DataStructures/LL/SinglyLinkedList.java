@@ -105,19 +105,19 @@ public class SinglyLinkedList {
      */
     public void reverse(){
         Node currentNode = head;
-        Node previousNode = null;
         Node nextNode = null;
+        Node prevNode = null;
 
         tail = head;
 
-        while(currentNode != null) {
+        while (currentNode != null) {
             nextNode = currentNode.next;
-            currentNode.next = previousNode;
-            previousNode = currentNode;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
             currentNode = nextNode;
         }
 
-        head = previousNode;
+        head = prevNode;
     }
 
     /**
@@ -145,14 +145,17 @@ public class SinglyLinkedList {
         prevNode.next = currentNode.next;
     }
 
+    /**
+     * Combine two singly linked list
+     * @param otherList
+     */
     public void concatenate(SinglyLinkedList otherList) {
         if (isEmpty()) {
             head = otherList.getHead();
-            tail = otherList.getTail();
         } else {
             tail.next = otherList.getHead();
-            tail = otherList.getTail();
         }
+        tail = otherList.getTail();
     }
 
     /**
