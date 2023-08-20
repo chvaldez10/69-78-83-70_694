@@ -53,9 +53,8 @@ public class CircularSinglyLinkedList {
 
     /**
      * Insert at the beginning of the list
-     * @param data data of the new node
+     * @param data data of the beginning of the node
      */
-
     public void insertAtBeginning(int data){
         if (isEmpty()) {
             addToEmpty(data);
@@ -66,6 +65,34 @@ public class CircularSinglyLinkedList {
             tail.next = newNode;
         }
         size++;
+    }
+
+    /**
+     * Insert node at given position
+     * @param data
+     * @param position
+     */
+    public void insertAtPosition(int data, int position) {
+        Node newNode = new Node(data);
+
+        if (position <= 1 || isEmpty()) {
+            if (isEmpty()) addToEmpty(data);
+            else{
+                newNode.next = head;
+                tail.next = newNode;
+                tail = newNode;
+            }
+        } else {
+//            previous = head
+//            for i from 2 to position - 1:
+//            set previous to previous's next
+//
+//            set node's next to previous's next
+//            set previous's next to the new node
+//
+//            if node's next is equal to head:
+//            set tail's next to the new node (maintain circularity)
+        }
     }
 
     /**
