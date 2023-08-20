@@ -23,6 +23,7 @@ class SLLTest {
         System.setOut(originalOut);
     }
     private int[] arr = {1, 2, 3, 4, 5};
+    private int[] arr2 = {6, 7, 8, 9, 10};
 
     @Test
     public void testInsert(){
@@ -192,6 +193,22 @@ class SLLTest {
         sll.delete(3);
 
         sll.display();
+        assertEquals(expectedOutputBeginning, output.toString());
+    }
+
+    @Test
+    public void testConcat() {
+        SinglyLinkedList sll1 = new SinglyLinkedList();
+        SinglyLinkedList sll2 = new SinglyLinkedList();
+        String newLine = System.lineSeparator();
+        String expectedOutputBeginning = "1 2 3 4 5 6 7 8 9 10 " + newLine;
+
+        for (int i : arr ) sll1.insert(i);
+        for (int i : arr2 ) sll2.insert(i);
+
+        sll1.concatenate(sll2);
+
+        sll1.display();
         assertEquals(expectedOutputBeginning, output.toString());
     }
 }

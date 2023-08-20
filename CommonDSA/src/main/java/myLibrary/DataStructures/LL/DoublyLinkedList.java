@@ -23,6 +23,10 @@ public class DoublyLinkedList {
 
     public int getTailData() { return this.tail.data; }
 
+    /**
+     * Add to the end of the list
+     * @param data
+     */
     public void append(int data) {
         Node newNode = new Node(data);
 

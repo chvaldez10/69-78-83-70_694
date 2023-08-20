@@ -21,6 +21,9 @@ public class SinglyLinkedList {
 
     public int getSize() { return this.size; }
 
+    public Node getHead() { return this.head; }
+    public Node getTail() { return this.tail; }
+
     public int getHeadData() { return this.head.data; }
 
     public int getTailData() { return this.tail.data; }
@@ -81,6 +84,11 @@ public class SinglyLinkedList {
         }
     }
 
+    /**
+     * Check to see if data is in the lis
+     * @param target data to find
+     * @return true if data  is in the list
+     */
     public boolean search(int target) {
         Node current = head;
 
@@ -135,6 +143,16 @@ public class SinglyLinkedList {
         }
 
         prevNode.next = currentNode.next;
+    }
+
+    public void concatenate(SinglyLinkedList otherList) {
+        if (isEmpty()) {
+            head = otherList.getHead();
+            tail = otherList.getTail();
+        } else {
+            tail.next = otherList.getHead();
+            tail = otherList.getTail();
+        }
     }
 
     /**
