@@ -83,15 +83,18 @@ public class CircularSinglyLinkedList {
                 tail = newNode;
             }
         } else {
-//            previous = head
-//            for i from 2 to position - 1:
-//            set previous to previous's next
-//
-//            set node's next to previous's next
-//            set previous's next to the new node
-//
-//            if node's next is equal to head:
-//            set tail's next to the new node (maintain circularity)
+            Node current = head;
+            int i = 2;
+            while (i < position) {
+                current = current.next;
+            }
+
+            newNode.next = current.next;
+            current.next = newNode;
+
+            if (newNode.next == head) {
+                tail = newNode;
+            }
         }
     }
 

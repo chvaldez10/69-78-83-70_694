@@ -57,7 +57,7 @@ public class SinglyLinkedList {
      * @param position index of the new node
      */
     public void insertAtPosition(int data, int position) throws IndexOutOfBoundsException{
-        if (position < 0 || position >= size) {
+        if (position < 0 || position > size) {
             throw new IndexOutOfBoundsException("Index out of bounds" + position);
         }
 
@@ -67,6 +67,7 @@ public class SinglyLinkedList {
         }
 
         Node currentNode = head;
+        Node newNode = new Node(data);
         int index = 0;
 
         while (index != position-1 && currentNode != null) {
@@ -77,11 +78,12 @@ public class SinglyLinkedList {
         if (currentNode == null) {
             insert(data);
         } else {
-            Node newNode = new Node(data);
             newNode.next = currentNode.next;
             currentNode.next = newNode;
-            size ++;
+            size++;
         }
+
+        if (tail.next != null) { tail = newNode; }
     }
 
     /**

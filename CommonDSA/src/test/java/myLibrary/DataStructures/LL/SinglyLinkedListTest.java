@@ -109,6 +109,7 @@ class SinglyLinkedListTest {
 
         // insert at beginning, 6 > 1 > 2 > 3  > 4 > 5
         sll.insertAtPosition(6, 0);
+        assertEquals(sll.getHeadData(), 6);
         sll.display();
         assertEquals(expectedOutputBeginning, output.toString());
     }
@@ -129,6 +130,7 @@ class SinglyLinkedListTest {
 
         // insert at End, 1 > 2 > 3 > 4 > 5 > 6
         sll.insertAtPosition(6, 5);
+        assertEquals(sll.getTailData(), 6);
         sll.display();
         assertEquals(expectedOutputBeginning, output.toString());
     }
@@ -151,7 +153,7 @@ class SinglyLinkedListTest {
         });
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            sll.insertAtPosition(6, 5);
+            sll.insertAtPosition(6, 6);
         });
     }
 
