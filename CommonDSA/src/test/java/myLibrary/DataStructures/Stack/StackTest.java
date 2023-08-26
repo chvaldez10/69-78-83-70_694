@@ -48,4 +48,20 @@ class StackTest {
         assertEquals(stack.getLength(), 0);
         assertTrue(stack.isEmpty());
     }
+
+    @Test
+    public void testIsFull(){
+        Stack stack = new Stack(5);
+        assertFalse(stack.isFull());
+        for(int i : arr) stack.push(i);
+        assertTrue(stack.isFull());
+    }
+
+    @Test
+    public void testPeek(){
+        Stack stack = new Stack(5);
+        for(int i : arr) stack.push(i);
+        assertEquals(5, stack.peek());
+        assertEquals(5, stack.getLength());
+    }
 }

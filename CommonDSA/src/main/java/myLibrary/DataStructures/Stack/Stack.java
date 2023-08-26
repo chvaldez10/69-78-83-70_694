@@ -61,10 +61,35 @@ public class Stack {
     }
 
     /**
+     * Returns the top of the stack
+     *
+     * @return data at the top of stack
+     */
+    public int peek(){
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return -1;
+        } else {
+            int data = top.data;
+            return data;
+        }
+    }
+
+    /**
      * Checks if Stack is empty.
      * @return true if stack is empty.
      */
     public boolean isEmpty(){
         return top == null;
+    }
+
+    /**
+     * Checks if stack is full
+     *
+     * @return true if stack si full
+     */
+    public boolean isFull() {
+        if(length == max) return true;
+        else return false;
     }
 }
