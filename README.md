@@ -18,7 +18,7 @@
 
 `Tree structure`:
 
-- TBD
+- BST
 
 `Graph algorithms`:
 
