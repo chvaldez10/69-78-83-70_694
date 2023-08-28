@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,16 +41,28 @@ class QueueTest {
     void enqueue() {
         Queue q = new Queue(arr.length);
         for (int i : arr) q.enqueue(i);
-        String newLine = System.lineSeparator();
-        String expectedOutput = "Stack Overflow." + newLine;
 
         // queue should have length of 5
         assertFalse(q.isEmpty());
         assertEquals(5, q.getLength());
 
-        q.enqueue(6);
-        assertEquals(expectedOutput, output.toString());
+        assertThrows(Queue.QueueOverflowException.class, () -> {
+            q.enqueue(6);
+        });
+    }
 
+    @Test
+    void testDequeue(){
+        Queue q = new Queue(arr.length);
+        for (int i : arr) q.enqueue(i);
+
+        for(int i=0; i<arr.length; i++) {
+            assertEquals(arr[i], q.dequeue());
+        }
+
+        assertThrows(NoSuchElementException.class, () -> {
+            q.dequeue();
+        });
     }
 
     @Test

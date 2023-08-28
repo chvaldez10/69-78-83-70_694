@@ -28,7 +28,8 @@ public class Stack {
     public int getMax() {return this.max; }
 
     /**
-     * Add data at the top of stack.
+     * Add data at the top of Stack.
+     *
      * @param data node data
      */
     public void push(int data){
@@ -44,9 +45,9 @@ public class Stack {
     }
 
     /**
-     * Return data at the top of stack.
+     * Return data at the top of Stack.
      *
-     * @return data at the top of stack
+     * @return data at the top of Stack
      */
     public int pop(){
         if (isEmpty()){
@@ -61,9 +62,9 @@ public class Stack {
     }
 
     /**
-     * Returns the top of the stack
+     * Returns the top of the stack without popping
      *
-     * @return data at the top of stack
+     * @return data at the top of Stack
      */
     public int peek(){
         if (isEmpty()) {
@@ -77,16 +78,14 @@ public class Stack {
 
     /**
      * Checks if Stack is empty.
-     * @return true if stack is empty.
+     * @return true if Stack is empty.
      */
     public boolean isEmpty(){
         return top == null;
     }
 
     /**
-     * Checks if stack is full
-     *
-     * @return true if stack si full
+     * @return true if Stack is full
      */
     public boolean isFull() {
         if(length == max) return true;
