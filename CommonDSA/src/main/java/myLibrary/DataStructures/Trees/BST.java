@@ -1,5 +1,8 @@
 package myLibrary.DataStructures.Trees;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class BST {
     private Node root;
 
@@ -13,6 +16,10 @@ public class BST {
         }
 
         public int getData() { return this.data; }
+
+        public Node getLeft() { return this.left; }
+
+        public Node getRight() { return this.right; }
     }
 
     private Node createNode( int data) { return new Node(data); }
@@ -20,6 +27,8 @@ public class BST {
     public void insert(int data) {
         root = insert(data, root);
     }
+
+    public Node getRoot() { return this.root; }
 
     private Node insert(int data, Node currentNode) {
         if (currentNode == null) {
@@ -53,7 +62,32 @@ public class BST {
         } else {
             return contains(currentNode.right, data);
         }
+    }
 
+    public ArrayList<Integer> inOrder(Node node, ArrayList list) {
+        if (node != null ){
+            inOrder(node.getLeft(), list);
+            list.add(node.getData());
+            inOrder(node.getRight(), list);
+        }
+        return list;
+    }
 
+    public ArrayList<Integer> preOrder(Node node, ArrayList list) {
+        if( node != null ) {
+            list.add(node.getData());
+            preOrder(node.getLeft(), list);
+            preOrder(node.getRight(), list);
+        }
+        return list;
+    }
+
+    public ArrayList<Integer> postOrder(Node node, ArrayList list) {
+        if (node != null ) {
+            postOrder(node.getLeft(), list);
+            postOrder(node.getRight(), list);
+            list.add(node.getData());
+        }
+        return list;
     }
 }
