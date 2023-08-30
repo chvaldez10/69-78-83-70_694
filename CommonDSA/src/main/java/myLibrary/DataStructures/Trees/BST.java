@@ -2,12 +2,14 @@ package myLibrary.DataStructures.Trees;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BST {
     private Node root;
 
     private class Node {
-        private int data;
+        private final int data;
         private Node left;
         private Node right;
 
@@ -20,6 +22,12 @@ public class BST {
         public Node getLeft() { return this.left; }
 
         public Node getRight() { return this.right; }
+    }
+
+    public class EmptyRootException extends Exception {
+        public EmptyRootException(String message) {
+            super(message);
+        }
     }
 
     private Node createNode( int data) { return new Node(data); }
@@ -89,5 +97,25 @@ public class BST {
             list.add(node.getData());
         }
         return list;
+    }
+
+    public ArrayList<Integer> breathFirsTraversal(Node node) throws EmptyRootException{
+        if (root == null) {
+            throw new EmptyRootException("Root is empty.");
+        }
+
+        ArrayList<Integer> bftResult = new ArrayList<>();
+        Queue<Node> q = new LinkedList<>();
+        q.add(node);
+
+        while (!q.isEmpty()){
+            Node tmpNode = q.remove();
+            bftResult.add(tmpNode.getData());
+
+            if (tmpNode.getLeft() != null ) q.add(tmpNode.getLeft());
+            if (tmpNode.getRight() != null ) q.add(tmpNode.getRight());
+        }
+
+        return bftResult;
     }
 }

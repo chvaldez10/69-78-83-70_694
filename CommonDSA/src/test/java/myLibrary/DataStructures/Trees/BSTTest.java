@@ -18,6 +18,9 @@ class BSTTest {
     private ArrayList<Integer> expectedPostOrderResult =
             new ArrayList<>(Arrays.asList(12, 23, 45, 50, 97, 54, 43, 30));
 
+    private ArrayList<Integer> expectedBFTResult =
+            new ArrayList<>(Arrays.asList(30, 23, 43, 12, 54, 50, 97, 45));
+
     private BST bst;
 
     @BeforeEach
@@ -58,6 +61,14 @@ class BSTTest {
         ArrayList<Integer> postOrderResult = new ArrayList<>();
         postOrderResult = bst.postOrder(bst.getRoot(), postOrderResult);
         assertEquals(postOrderResult, expectedPostOrderResult);
+    }
+
+    @Test
+    public void testBFTTraversal() throws BST.EmptyRootException {
+        for (int i : arr) bst.insert(i);
+        ArrayList<Integer> bftResult = new ArrayList<>();
+        bftResult = bst.breathFirsTraversal(bst.getRoot());
+        assertEquals( bftResult, expectedBFTResult);
     }
 
 }
