@@ -67,7 +67,7 @@ class BSTTest {
     public void testBFTTraversal() throws BST.EmptyRootException {
         for (int i : arr) bst.insert(i);
         ArrayList<Integer> bftResult = new ArrayList<>();
-        bftResult = bst.breathFirsTraversal(bst.getRoot());
+        bftResult = bst.breathFirstTraversal(bst.getRoot());
         assertEquals( bftResult, expectedBFTResult);
     }
 

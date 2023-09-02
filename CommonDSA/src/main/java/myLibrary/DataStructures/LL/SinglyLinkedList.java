@@ -14,11 +14,14 @@ public class SinglyLinkedList {
         }
     }
 
-    // instant variables
+    // instance variables
     private Node head = null;
     private Node tail = null;
     private int size = 0;
 
+    /**
+     * Getters and setters
+     */
     public int getSize() { return this.size; }
 
     public Node getHead() { return this.head; }

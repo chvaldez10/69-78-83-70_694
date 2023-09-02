@@ -6,8 +6,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BST {
+    // instance variables
     private Node root;
 
+    /**
+     * Node class for BST
+     */
     private class Node {
         private final int data;
         private Node left;
@@ -24,20 +28,41 @@ public class BST {
         public Node getRight() { return this.right; }
     }
 
+    /**
+     * Getters and setters
+     */
+    public Node getRoot() { return this.root; }
+
+    /**
+     * Customer exception class
+     */
     public class EmptyRootException extends Exception {
         public EmptyRootException(String message) {
             super(message);
         }
     }
 
+    /**
+     * Create a BST node
+     * @param data
+     * @return new BST node
+     */
     private Node createNode( int data) { return new Node(data); }
 
+    /**
+     * Driver function to insert a new node.
+     * @param data
+     */
     public void insert(int data) {
         root = insert(data, root);
     }
 
-    public Node getRoot() { return this.root; }
-
+    /**
+     * Helper function append to BST
+     * @param data
+     * @param currentNode
+     * @return
+     */
     private Node insert(int data, Node currentNode) {
         if (currentNode == null) {
             return createNode(data);
@@ -52,6 +77,11 @@ public class BST {
         return currentNode;
     }
 
+    /**
+     * Driver code to check for first time a target data is detected.
+     * @param data
+     * @return
+     */
     public boolean contains(int data) {
         return contains(root, data);
     }
@@ -72,6 +102,12 @@ public class BST {
         }
     }
 
+    /**
+     * BST in order traversal (left, root, right)
+     * @param node
+     * @param list
+     * @return
+     */
     public ArrayList<Integer> inOrder(Node node, ArrayList list) {
         if (node != null ){
             inOrder(node.getLeft(), list);
@@ -81,6 +117,12 @@ public class BST {
         return list;
     }
 
+    /**
+     * BST pre order traversal (root, left, right)
+     * @param node
+     * @param list
+     * @return
+     */
     public ArrayList<Integer> preOrder(Node node, ArrayList list) {
         if( node != null ) {
             list.add(node.getData());
@@ -90,6 +132,12 @@ public class BST {
         return list;
     }
 
+    /**
+     * BST pre order traversal (left, right, root)
+     * @param node
+     * @param list
+     * @return
+     */
     public ArrayList<Integer> postOrder(Node node, ArrayList list) {
         if (node != null ) {
             postOrder(node.getLeft(), list);
@@ -99,7 +147,13 @@ public class BST {
         return list;
     }
 
-    public ArrayList<Integer> breathFirsTraversal(Node node) throws EmptyRootException{
+    /**
+     * BFS for BST
+     * @param node
+     * @return
+     * @throws EmptyRootException
+     */
+    public ArrayList<Integer> breathFirstTraversal(Node node) throws EmptyRootException{
         if (root == null) {
             throw new EmptyRootException("Root is empty.");
         }
