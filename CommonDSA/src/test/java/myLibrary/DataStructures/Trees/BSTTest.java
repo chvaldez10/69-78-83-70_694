@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EmptyStackException;
 
 class BSTTest {
     private int[] arr = {30, 23, 43, 54, 12, 50, 45, 97};
@@ -71,4 +72,17 @@ class BSTTest {
         assertEquals( bftResult, expectedBFTResult);
     }
 
+
+    @Test
+    public void testSearch() throws BST.EmptyRootException {
+        for (int i : arr) bst.insert(i);
+        boolean testTrue = bst.searchBST(bst.getRoot(), 23);
+        assertTrue(testTrue);
+        boolean testFalse = bst.searchBST(bst.getRoot(), 1);
+        assertFalse(testFalse);
+
+        assertThrows(BST.EmptyRootException.class, () -> {
+            bst.searchBST(null, 2);
+        });
+    }
 }

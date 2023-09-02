@@ -172,4 +172,42 @@ public class BST {
 
         return bftResult;
     }
+
+    /**
+     * Search binary tree for given data.
+     * @param root
+     * @param data
+     * @return
+     * @throws EmptyRootException
+     */
+    public boolean searchBST(Node root, int data) throws EmptyRootException{
+        if (root == null) {
+            throw new EmptyRootException("Root is empty.");
+        }
+        Node searchNode = searchBSTRecursive(root, data);
+
+        if (searchNode != null ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private Node searchBSTRecursive(Node root, int data){
+        if(root == null) return null;
+        if(root.getData() == data) return root;
+        else if (root.getData()<data) return searchBSTRecursive(root.getRight(), data);
+        else return searchBSTRecursive(root.getLeft(), data);
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
