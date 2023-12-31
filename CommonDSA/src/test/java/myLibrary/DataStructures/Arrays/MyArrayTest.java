@@ -21,5 +21,6 @@ class MyArrayTest {
         assertEquals(1, myArray.getArrayElement(0), "First element should be 1");
         assertEquals(2, myArray.getArrayElement(1), "First element should be 2");
         assertEquals(3, myArray.getArrayElement(2), "First element should be 3");
+        assertEquals(3, myArray.getArrayLength(), "The length of the array should be 3");
     }
 }

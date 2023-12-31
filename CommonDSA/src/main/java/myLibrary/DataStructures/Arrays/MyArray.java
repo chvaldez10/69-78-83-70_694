@@ -11,11 +11,16 @@ public class MyArray {
         this.data = new ArrayList<>();
     }
 
+    public int getArrayLength() {
+        return this.length;
+    }
+
     public int getArrayElement(int index) {
         return this.data.get(index);
     }
 
     public void addElement(int data) {
         this.data.add(data);
+        this.length += 1;
     }
 }
