@@ -1,27 +1,35 @@
-# Unit Testing for common DSA
+# Java DSA Libraries 🚀
 
-`Search`:
+This repo is for honing those common data structures & algorithms skills in Java!
 
-- TBD
+## What's Inside? 📦
 
-`Sort`:
+### `Array` 📝:
 
-- TBD
+- More cool stuff coming soon!
 
-`Linear data structures`:
+### `Search` 🔍:
 
-- Singly-linked list
-- Circular Singly-linked list
-- Double-linked list
-- Stack
-- Queue
+- Stay tuned!
 
-`Tree structure`:
+### `Sort` 🔄:
 
-- BST
+- Watch this space!
 
-`Graph algorithms`:
+### `Linear Data Structures` 🏗️:
 
-- Breadth-first search TBD
-- Depth-first search TBD
-- Dijkstra TBD
+- Singly-linked List
+- Circular Singly-linked List
+- Doubly-linked List
+- Stack 🥞
+- Queue 🚶‍♂️🚶‍♀️
+
+### `Tree Structures` 🌳:
+
+- Binary Search Tree (BST)
+
+### `Graph Algorithms` 🌐:
+
+- Breadth-first Search (Coming soon!)
+- Depth-first Search (On its way!)
+- Dijkstra's Algorithm (Work in progress!)
