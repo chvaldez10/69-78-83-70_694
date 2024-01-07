@@ -1,0 +1,27 @@
+# Maven target directory
+/target/
+
+# IntelliJ IDEA
+.idea/
+
+# Eclipse
+.metadata/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
+
+# Mac OS
+.DS_Store
+
+# Personal Files
+ENSF694
